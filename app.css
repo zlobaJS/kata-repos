@@ -1,0 +1,337 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap');
+
+* {
+    margin: 0;
+    pad: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    background: #cfd1e1;
+    overflow: hidden;
+    flex-direction: column;
+    font-family: 'Barlow Condensed', sans-serif;
+}
+
+
+.shadow {
+    position: absolute;
+    top: 0;
+    width: calc(100% + 50px);
+    left: -50px;
+    height: 300px;
+    transform-origin: top;
+    transform: skew(43deg);
+    background: linear-gradient(180deg, rgba(0,0,0, 0.1), transparent, transparent);
+    pointer-events: none;
+}
+
+.shadow::before {
+    content: '';
+    position: absolute;
+    width: 55px;
+    height: 51px;
+    background: #cfd1e1;
+    z-index: 1;
+}
+
+
+.searchBox {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 65px;
+    height: 50px;
+    transition: 0.8s;
+  
+  
+}
+
+.searchBox::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(#fff, #fff, #e3e3e3);
+    filter: blur(1px);
+    
+}
+
+
+
+.searchBox::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -1px;
+    width: 10px;
+    height: 100%;
+    z-index: 1;
+    background: #9d9d9d;
+    filter: blur(1px);
+}
+
+
+.searchBox input {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 10px 25px;
+    font-size: 1.5em;
+    color: #555;
+    background: linear-gradient(#dbdae1, #a3aaba);
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.1),
+    20px 20px 15px rgba(0,0,0,0.1),
+    30px 30px 15px rgba(0,0,0,0.1),
+    inset 1px 1px 2px #fff;
+    outline: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    
+}
+
+.searchBox input::placeholder,
+.searchBox input {
+        color: transparent;
+}
+
+.searchBox:hover input::placeholder,
+.searchBox:hover input {
+    color: #555;
+}
+
+ion-icon {
+    position: absolute;
+    right: 20px;
+    color: #555;
+    font-size: 1.5em;
+    cursor: pointer;
+
+}
+
+.searchBox:hover {
+    width: 500px;
+
+}
+
+
+.result-wrapper {
+    position: absolute;
+    top: 100px;
+    width: 400px;
+    
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 2em;
+    color:rgb(73, 73, 73);
+    list-style-type: none;
+    padding: 5px;
+    position: relative;
+      box-shadow: 2px 2px 2px rgba(0,0,0,0.1),
+     5px 5px 5px rgba(0,0,0,0.1),
+     10px 10px 10px rgba(0,0,0,0.1),
+     inset 2px 1px 2px #fff;
+     cursor: pointer;
+     transition: 0.3s;
+     opacity: 1;
+     padding: 10px;
+    
+}
+
+li:hover {
+   background: #3f3e3e;
+   color:rgb(131, 130, 130)
+}
+
+
+li:after {
+    position: absolute;
+    content:'';
+    height: 14px;
+    width: 14px;
+    right: 20px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.1),
+    5px 5px 5px rgba(0,0,0,0.1),
+    10px 10px 10px rgba(0,0,0,0.1),
+    inset 2px 1px 2px #fff;
+    border-radius: 50px;
+}
+
+
+
+li:nth-child(1):hover::after{
+    background: rgb(133, 255, 224);
+    filter: blur(12);
+  
+}
+
+li:nth-child(2) {
+    animation: hell1 0.8s ease-in-out;
+    
+}
+
+li:nth-child(3) {
+    animation: hell2 1s ease-in-out;
+    
+}
+
+li:nth-child(4) {
+    animation: hell3 1.2s ease-in-out;
+   
+}
+
+li:nth-child(5) {
+    animation: hell4 1.4s ease-in-out;
+    
+}
+
+
+@keyframes hello {
+    0% {
+        opacity: 0;
+      
+    }
+    100% {
+        opacity: 1;
+       
+    }
+
+}
+
+@keyframes hell1 {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1;
+        
+    }
+}
+
+@keyframes hell2 {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1;
+    
+    }
+}
+
+@keyframes hell3 {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1;
+        
+    }
+}
+
+@keyframes hell4 {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1;
+     
+    }
+}
+
+
+
+span {
+    color: rgb(185, 185, 185);
+    animation: blinker 1s linear infinite;   
+}
+
+@keyframes blinker {
+   
+}
+
+.searchBox p {
+    position: absolute;
+    font-size: 40px;
+    right: 60px;
+    color: transparent;
+    top: -10px;
+}
+
+
+.searchBox:hover p {
+    color:  rgba(90, 90, 90, 0.192);
+    font-weight: bold;
+    padding: 2px;
+}
+
+/* .searchBox input::placeholder,
+.searchBox input {
+        color: transparent;
+}
+
+.searchBox:hover input::placeholder,
+.searchBox:hover input {
+    color: #555;
+} */
+
+#message {
+    animation: blinker 1s ease-in-out infinite; 
+}
+
+
+.animate-output {
+    height: 30px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    color:rgba(51, 51, 51, 0.658);
+    margin-left: 10px;
+  
+    
+}
+
+.animated  {
+    transition: 0.5s;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+   
+}
+
+.animate-output.blue {
+   
+    text-shadow: 2px 2px 23px  rgb(114, 175, 253);
+}
+
+.animate-output.green {
+   
+    text-shadow: 2px 2px 23px  rgb(151, 247, 194);
+}
+
+.animate-output.default {
+    color: rgb(97, 97, 97);
+    text-shadow: 2px 2px 23px  rgb(247, 168, 168);
+}
+
+
+.info {
+    margin-top: 10px;
+}
+
+.info span {
+    color:rgb(73, 73, 73);
+    
+}
