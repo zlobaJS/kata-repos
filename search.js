@@ -95,16 +95,16 @@ getIp ();
 
 // Выводим прогноз погоды.
 const getWeather = async () => {
-  const res = await fetch('http://api.openweathermap.org/data/2.5/weather?id=499099&appid=c667fe8920587011d92c9698b0a7324e');
+  const res = await fetch('https://api.openweathermap.org/data/2.5/weather?id=499099&appid=c667fe8920587011d92c9698b0a7324e');
   const data = res.json();
   console.log(data)
 }
 
 const renderRepoInfo = () => {
-
+ console.log('hello')
 };
 
-getWeather ()
+getWeather()
 
 const debounced = debounce(ViewRender, 800);
 
