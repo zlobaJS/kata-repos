@@ -33,7 +33,7 @@ const createElement = (tagName, className) => {
 }
 
 
-const animateTitle = (data) => {
+const animateTitle = data => {
  
   var typed = new Typed('.animate-output', {
     strings: [`${data}`],

@@ -1,11 +1,13 @@
 import { typeWriter, typingAudio, createElement, animateTitle  } from "/data.js";
-
+import  { getIp } from "/modules/getIp.js";
+import  { checkStatus, animateTitleH1  } from '/modules/checkStatus.js';
 
 // объявляем переменные
-const input = document.querySelector("input"), wrapperResult = document.querySelector(".result-wrapper"),
-ul = document.createElement("ul"), PER_PAGE = 5, LENGTH = 3, animateTitleh1 = document.querySelector('.animate-output');
-const span = document.querySelector('span');
-
+const input = document.querySelector("input");
+const wrapperResult = document.querySelector(".result-wrapper");
+const ul = document.createElement("ul");
+const PER_PAGE = 5;
+const LENGTH_LIMIT = 3;
 
 function debounce(callee, timeoutMs) {
   return function perform(...args) {
@@ -20,7 +22,7 @@ function debounce(callee, timeoutMs) {
 
 const getResponse = async () => {
   try {
-    const RESPONSE_URL = `https://api.github.com/search/repositories?q=${input.value}&sort=stars&per_page=${PER_PAGE}`;
+    const RESPONSE_URL = `http://api.github.com/search/repositories?q=${input.value}&sort=stars&per_page=${PER_PAGE}`;
     const response = await fetch(RESPONSE_URL);
     if (response.ok) {
       const data = await response.json();
@@ -36,23 +38,14 @@ const getResponse = async () => {
 
 const ViewRender = () => {
   let arr = [];
-
   if (ul.hasChildNodes()) {
     while (ul.firstChild) {
       ul.removeChild(ul.lastChild);
     }
   }
-
-  if (input.value.length > 3) {
+  if (input.value.length > LENGTH_LIMIT) {
     getResponse().then((response) => {
-      
-    const totalCount = response.total_count;
-    totalCount >= 31000 && totalCount < 99999 ?  animateTitleh1.classList.add('blue') : animateTitleh1.classList.remove('blue');
-    totalCount >= 100000 ?  animateTitleh1.classList.add('green') : animateTitleh1.classList.remove('green');
-    totalCount < 30000 ?  animateTitleh1.classList.add('default') : animateTitleh1.classList.remove('default');
-    
-
-      animateTitle (totalCount);
+      checkStatus(response)
       const responsItems = response.items.length;
       for (let i = 0; i < responsItems; i++) {
           const item = response.items[i].name;
@@ -61,53 +54,18 @@ const ViewRender = () => {
           wrapperResult.append(ul);
           arr.push(liRender);
       }
-      let newAr = arr.map(el => ul.appendChild(el))
-      newAr.forEach(el => {
-        el.onclick = (e) => {
-          if (e.target.classList.contains('view')) {
-            
-            
-          } else {
-            
-          }
-        }
-      })
-     
+     const newArray = arr.map(el => ul.appendChild(el))
     });
   } else {
-    animateTitleh1.textContent = '';
+    animateTitleH1.textContent = '';
   }
 };
 
 
+getIp ('http://api.db-ip.com/v2/free/self');
 
-// Получаем ip
-const getIp = async () => {
- 
-  const res = await fetch('https://api.db-ip.com/v2/free/self');
-  const data = await res.json();
-  span.innerText = `IP: ${data.ipAddress} City: ${data.city} Continent: ${data.continentName}`;
-
-}
-
-getIp ();  
-
-
-// Выводим прогноз погоды.
-const getWeather = async () => {
-  const res = await fetch('https://api.openweathermap.org/data/2.5/weather?id=499099&appid=c667fe8920587011d92c9698b0a7324e');
-  const data = res.json();
-  console.log(data)
-}
-
-const renderRepoInfo = () => {
- console.log('hello')
-};
-
-getWeather()
-
+console.log('hui');
 const debounced = debounce(ViewRender, 800);
-
 input.addEventListener("input", debounced);
 input.addEventListener("input", typingAudio);
 document.addEventListener("input", typeWriter);
