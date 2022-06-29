@@ -176,27 +176,27 @@ li:after {
 li:nth-child(1):hover::after{
     background: rgb(133, 255, 224);
     filter: blur(12);
-  
+
 }
 
 li:nth-child(2) {
-    animation: hell1 0.8s ease-in-out;
-    
+    animation: hell1 0.5s ease-in-out;
+
 }
 
 li:nth-child(3) {
-    animation: hell2 1s ease-in-out;
-    
+    animation: hell2 0.7s ease-in-out;
+
 }
 
 li:nth-child(4) {
-    animation: hell3 1.2s ease-in-out;
-   
+    animation: hell3 0.8s ease-in-out;
+
 }
 
 li:nth-child(5) {
-    animation: hell4 1.4s ease-in-out;
-    
+    animation: hell4 1s ease-in-out;
+
 }
 
 
@@ -259,9 +259,7 @@ span {
     animation: blinker 1s linear infinite;   
 }
 
-@keyframes blinker {
-   
-}
+
 
 .searchBox p {
     position: absolute;
@@ -334,4 +332,53 @@ span {
 .info span {
     color:rgb(73, 73, 73);
     
+}
+
+.popup {
+    position: relative;
+    width: 300px;
+    height: auto;
+    position: absolute;
+    top: 100px;
+    pointer-events: none;
+    font-size: 1.3em;
+    color:rgb(73, 73, 73);
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.1),
+    5px 5px 5px rgba(0,0,0,0.1),
+    10px 10px 10px rgba(0,0,0,0.1),
+    inset 2px 1px 2px #fff;
+    transition: 0.3s;
+    padding: 10px;
+    opacity: 0;
+
+}
+
+.out-show {
+    color: black;
+
+}
+
+.popup.active {
+    opacity: 1;
+    animation: n 0.5s ease-out;
+}
+
+@keyframes n {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1;
+
+    }
+}
+
+img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    top: 20px;
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
 }
